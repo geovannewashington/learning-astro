@@ -1,6 +1,24 @@
 ---
+const pageTitle = "About me";
 
+const identity = {
+	firstName : "Tpose",	
+	country : "Brazil",	
+	occupation : "Vagabundo",	
+	hobbies : ['Programming', 'Reading', 'urmom', 'Drinking Tea']
+
+};
+
+const skills = ['Best at Counter-Strike (sort of)', 'Streamer of the Year 2013', 'Minecraft Redstone Wisdom'];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
+
+<!-- Note that these code fences are called frontmatter, we can specify javascript variables there 
+and then directly use them into the html below-->
+
 
 <html lang="en">
 	<head>
@@ -8,14 +26,45 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
 		<a href="/">Home</a>
-		<a href="/about">About</a>
-		<a href="/blog">Blog</a>
+		<a href="/about/">About</a>
+		<a href="/blog/">Blog</a>
 		
-		<h1>About Us</h1>
+		<h1>{pageTitle}</h1>
 		<p>Here you can learn a bit more about us!</p>
+	
+		<ul>
+			<li>My name is {identity.firstName}.</li>
+			<li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+			{identity.hobbies.length >= 2 && 
+				<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
+			}
+		</ul>
+		
+		<p>My skills are:</p>
+		<ul>
+			{skills.map((skill) => <li>{skill}</li>)}
+		</ul>
+
+		<!-- Conditionally rendering elements -->
+		{happy && <p>I am happy, FeelsGoodMan Clap, louder!</p>}
+		{finished && <p>I'm finished... sadE</p>}
+		{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goals is not in 3 daysMy goals is not in 3 days.</p>}
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
