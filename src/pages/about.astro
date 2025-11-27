@@ -1,4 +1,7 @@
 ---
+// importing global css style
+import '../styles/global.css';
+
 const pageTitle = "About me";
 
 const identity = {
@@ -9,11 +12,15 @@ const identity = {
 
 };
 
-const skills = ['Best at Counter-Strike (sort of)', 'Streamer of the Year 2013', 'Minecraft Redstone Wisdom'];
+const skills = ['Best at Counter-Strike (sort of)', 'Streamer of the Year 2013', 'Minecraft Redstone Wizard'];
 
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor: string = 'crimson';
+const fontWeight: string = 'bold'; 
+const textCase: string = 'uppercase'; 
 ---
 
 <!-- Note that these code fences are called frontmatter, we can specify javascript variables there 
@@ -27,6 +34,25 @@ and then directly use them into the html below-->
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<style define:vars={{skillColor, fontWeight, textCase}}>
+			/* We can reference any variable from our frontmatter script 
+			 * using the define:vars={ {...} } directive*/
+			html {
+				font-family: Ubuntu, sans-serif;
+			}
+
+			h1 {
+				color: purple;
+				font-size: 4rem;
+			}
+
+			.skill {
+				color: var(--skillColor);
+				font-weight: fontWeight;
+				text-transform: var(--textCase);
+			}
+
+		</style>
 	</head>
 	<body>
 		<a href="/">Home</a>
@@ -46,7 +72,7 @@ and then directly use them into the html below-->
 		
 		<p>My skills are:</p>
 		<ul>
-			{skills.map((skill) => <li>{skill}</li>)}
+			{skills.map((skill) => <li class="skill">{skill}</li>)}
 		</ul>
 
 		<!-- Conditionally rendering elements -->
