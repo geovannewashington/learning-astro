@@ -12,19 +12,22 @@ const pageTitle = 'Home Page';
 
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta name="viewport" content="width=device-width" />
-<meta name="generator" content={Astro.generator} />
-<title>{pageTitle}</title>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{pageTitle}</title>
 </head>
 
 <body>
-<Header />
+	<Header />
 
-<h1>{pageTitle}</h1>
-<p>This is the entry point of this website!</p>
+	<h1>{pageTitle}</h1>
+	<p>This is the entry point of this website!</p>
 
-<Footer />
+	<Footer />
+	<script> 
+		import '../scrips/menu.js';
+	</script>
 </body>
 </html>
