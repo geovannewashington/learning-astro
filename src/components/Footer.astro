@@ -1,13 +1,21 @@
----
-const plataform: string = "github";
-const username: string = "geovannewashington";
----
-<!--Footer.astro-->
+<!-- Footer.astro -->
 
+---
+// --
+// Components
+// --
+import Social from './Social.astro';
+---
+<style>
+  footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
+    
 <footer>
-    <p>
-    See more sexy code on my 
-        <a href={`https://${plataform}.com/${username}`} target="_blank">{plataform}</a> 
-    profile!
-    </p>
+    <Social platform="github" username="geovannewashington" />
+    <Social platform="youtube" username="@tposeprogrammer" />
+    <Social platform="twitch" username="tposeprogrammer_" />
 </footer>
