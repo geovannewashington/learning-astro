@@ -1,14 +1,6 @@
 ---
-// -- 
-// 1. Components
-// -- 
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-
-// --
-// 2.Importing global css style
-// --
-import '../styles/global.css';
+// 1. Layout Imports
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "About me";
 
@@ -31,63 +23,33 @@ const fontWeight: string = 'bold';
 const textCase: string = 'uppercase'; 
 ---
 
-<!-- Note that these code fences are called frontmatter, we can specify javascript variables there 
-and then directly use them into the html below-->
-
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
+<BaseLayout pageTitle={pageTitle}>
 		<style define:vars={{skillColor, fontWeight, textCase}}>
-			/* We can reference any variable from our frontmatter script 
-			 * using the define:vars={ {...} } directive*/
-			html {
-				font-family: Ubuntu, sans-serif;
-			}
+		.skill {
+			color: var(--skillColor);
+			font-weight: fontWeight;
+			text-transform: var(--textCase);
+		}
+	</style>
 
-			h1 {
-				color: purple;
-				font-size: 4rem;
-			}
+	<p>Here you can learn a bit more about us!</p>
 
-			.skill {
-				color: var(--skillColor);
-				font-weight: fontWeight;
-				text-transform: var(--textCase);
-			}
-		</style>
-	</head>
-	<body>
-        <Header />
-			
-		<h1>{pageTitle}</h1>
-		<p>Here you can learn a bit more about us!</p>
-	
-		<ul>
-			<li>My name is {identity.firstName}.</li>
-			<li>I live in {identity.country} and I work as a {identity.occupation}.</li>
-			{identity.hobbies.length >= 2 && 
-				<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
-			}
-		</ul>
-		
-		<p>My skills are:</p>
-		<ul>
-			{skills.map((skill) => <li class="skill">{skill}</li>)}
-		</ul>
+	<ul>
+		<li>My name is {identity.firstName}.</li>
+		<li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+		{identity.hobbies.length >= 2 && 
+		<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
+		}
+	</ul>
 
-		<!-- Conditionally rendering elements -->
-		{happy && <p>I am happy, FeelsGoodMan Clap, louder!</p>}
-		{finished && <p>I'm finished... sadE</p>}
-		{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goals is not in 3 daysMy goals is not in 3 days.</p>}
+	<p>My skills are:</p>
+	<ul>
+		{skills.map((skill) => <li class="skill">{skill}</li>)}
+	</ul>
 
-	<Footer />
-	<script> 
-		import '../scripts/menu.js';
-	</script>
-	</body>
-</html>
+	<!-- Conditionally rendering elements -->
+	{happy && <p>I am happy, FeelsGoodMan Clap, louder!</p>}
+	{finished && <p>I'm finished... sadE</p>}
+	{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goals is not in 3 daysMy goals is not in 3 days.</p>}
+</BaseLayout>
+
