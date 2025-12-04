@@ -2,7 +2,7 @@
 // -- 
 // 1. Components
 // -- 
-import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 import '../styles/global.css';
@@ -19,8 +19,7 @@ const pageTitle: string = 'My Astro Learning Blog'; // typescript also works...
 		<!-- We then can use curly braces to use javascript -->
 	</head>
 	<body>
-		<Navigation />
-		
+		<Header />
 		<h1>{pageTitle}</h1>
 		<p>This is where I will post about my journey learning Astro.</p>
 		<ul>
