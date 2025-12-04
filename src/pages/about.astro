@@ -1,5 +1,12 @@
 ---
-// importing global css style
+// -- 
+// 1. Components
+// -- 
+import Navigation from "../components/Navigation.astro";
+
+// --
+// 2.Importing global css style
+// --
 import '../styles/global.css';
 
 const pageTitle = "About me";
@@ -51,13 +58,10 @@ and then directly use them into the html below-->
 				font-weight: fontWeight;
 				text-transform: var(--textCase);
 			}
-
 		</style>
 	</head>
 	<body>
-		<a href="/">Home</a>
-		<a href="/about/">About</a>
-		<a href="/blog/">Blog</a>
+        <Navigation />
 		
 		<h1>{pageTitle}</h1>
 		<p>Here you can learn a bit more about us!</p>
@@ -81,16 +85,3 @@ and then directly use them into the html below-->
 		{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goals is not in 3 daysMy goals is not in 3 days.</p>}
 	</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
