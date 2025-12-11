@@ -3,6 +3,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle: string = 'My Astro Learning Blog'; // typescript also works...
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 ---
 
 
